@@ -1,12 +1,12 @@
-from typing import List
-
-
-def brutforce(words: List[str]):
+def brutforce(words: list[str]):
+    if not is_words_correct_type(words):
+        raise TypeError
+    
     max_length = 0
     answer = []
     for word1 in words:
         for word2 in words:
-            if word1 == word2:
+            if word1 == word2 or word1 == "" or word2 == "":
                 continue
             min_len = max_length
             max_len = min(len(word2), len(word2))
@@ -18,7 +18,10 @@ def brutforce(words: List[str]):
     return max_length, answer
 
 
-def fast(words: List[str]):
+def fast(words: list[str]):
+    if not is_words_correct_type(words):
+        raise TypeError
+
     answer_length = 0
     answer = []
     prefixes = {}
@@ -46,3 +49,14 @@ def fast(words: List[str]):
                 break
 
     return answer_length, answer
+
+
+def is_words_correct_type(data) -> bool:
+    if not isinstance(data, list):
+        return False
+
+    for i in data:
+        if not isinstance(i, str):
+            return False
+
+    return True

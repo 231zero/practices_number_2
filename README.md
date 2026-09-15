@@ -1,10 +1,12 @@
 # practices_number_2
+```
 Практика по тестированию
 
 Требуется написать тесты с помощью pytest для следующих функций:
-subpref/fast 
-subpref/brutforce
+subpref/fast                                           (Сделано)
+subpref/brutforce                                      (Сделано)
 
-настроить coverage
-
-примеры тестов с пары в tests_examples 
+Дополнительное задание:
+Написать тесты с помощью unittest                      
+настроить coverage                                     (Сделано)
+```
