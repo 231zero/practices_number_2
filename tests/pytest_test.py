@@ -16,17 +16,15 @@ from subprefix.subpref import brutforce, fast
      1, 
      ["test1", "123"])
 ])
-def test_same_results(words: list[str], exp_max_length: int, exp_answer: list[str]):
+def test_default(words: list[str], exp_max_length: int, exp_answer: list[str]):
     brut_max_length, brut_answer = brutforce(words)
     fast_max_length, fast_answer = fast(words)
 
     assert brut_max_length == exp_max_length
-    assert len(brut_answer) == 2
-    for i in brut_answer: assert i in exp_answer
+    assert set(brut_answer) == set(exp_answer)
 
     assert fast_max_length == exp_max_length
-    assert len(fast_answer) == 2
-    for i in fast_answer: assert i in exp_answer
+    assert set(fast_answer) == set(exp_answer)
 
 
 @pytest.mark.parametrize("words", [
@@ -61,3 +59,6 @@ def test_empty_result(words: list[str]):
 def test_argument_type_error(words):
     with pytest.raises(TypeError):
         brutforce(words)
+
+    with pytest.raises(TypeError):
+        fast(words)
